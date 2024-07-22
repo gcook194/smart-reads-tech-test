@@ -19,3 +19,6 @@ logging:
 rsa:
   private-key: classpath:certs/private.pem
   public-key: classpath:certs/public.pem
+user:
+  username: gcook
+  password: password

@@ -1,4 +1,4 @@
-package uk.co.scottishpower.smartreads.config;
+package uk.co.scottishpower.smartreads.config.propertysource;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

@@ -20,6 +20,7 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import uk.co.scottishpower.smartreads.config.propertysource.RsaKeyProperties;
 
 @Configuration
 @EnableWebSecurity
@@ -40,6 +41,7 @@ public class SecurityConfig {
                 .privateKey(rsaKeys.privateKey())
                 .build();
         final JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
+
         return new NimbusJwtEncoder(jwks);
     }
 
