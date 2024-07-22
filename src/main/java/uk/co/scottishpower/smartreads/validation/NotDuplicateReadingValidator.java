@@ -16,9 +16,26 @@ public class NotDuplicateReadingValidator implements ConstraintValidator<NotDupl
 
     @Override
     public boolean isValid(Object o, ConstraintValidatorContext constraintValidatorContext) {
-        final MeterReadDTO dto = (MeterReadDTO) o;
-        final LocalDate date = LocalDate.parse(dto.date());
+        constraintValidatorContext.disableDefaultConstraintViolation();
 
-        return !meterReadsService.existsByMeterIdAndDate(dto.meterId(), date);
+        final MeterReadDTO dto = (MeterReadDTO) o;
+
+        //TODO get validation groups working so we can remove this inline check
+        if (dto.date() == null) {
+            constraintValidatorContext.buildConstraintViolationWithTemplate("Date must not be null")
+                    .addConstraintViolation();
+
+            return false;
+        }
+
+        final LocalDate date = LocalDate.parse(dto.date());
+        final boolean readingExistsForMeterAndDate = meterReadsService.existsByMeterIdAndDate(dto.meterId(), date);
+
+        if (readingExistsForMeterAndDate) {
+            constraintValidatorContext.buildConstraintViolationWithTemplate("A reading for this date already exists")
+                    .addConstraintViolation();
+        }
+
+        return !readingExistsForMeterAndDate;
     }
 }

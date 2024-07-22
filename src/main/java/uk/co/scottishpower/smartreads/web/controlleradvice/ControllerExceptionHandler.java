@@ -29,7 +29,7 @@ public class ControllerExceptionHandler {
     })
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     public ErrorMessage handle404s(Exception ex, WebRequest request) {
-        log.error("Exception thrown: ", ex);
+        log.error("Exception thrown: ", ex.getStackTrace());
         return ErrorMessage.builder()
                 .status(HttpStatus.NOT_FOUND)
                 .date(ZonedDateTime.now(clock))
@@ -41,7 +41,7 @@ public class ControllerExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ErrorResponseBody handleValidationExceptions(MethodArgumentNotValidException ex) {
-        log.error("MethodArgumentNotValidException thrown: ", ex);
+        log.error("MethodArgumentNotValidException thrown: ", ex.getStackTrace());
         final List<Error> errors = ex.getAllErrors()
                 .stream()
                 .map(e -> {
