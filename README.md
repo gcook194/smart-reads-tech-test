@@ -88,7 +88,7 @@ Serenity, Newman (Postman for pipelines), Cypress and plain MockMVC so this was 
 ### Database Schema Design
 I have chosen to only use one database table with a `type` discriminator column since the `gasReads` and `elecReads` 
 collections in the test contain all the same attributes and data types. If these were different I might have chosen to 
-use two tables, or built a the objects and scheme using polymorphism while still using a single table strategy in JPA. 
+use two tables, or built the objects and schema using polymorphism while still using a single table strategy in JPA. 
 
 ### DTOs & Object Mapping
 I have chosen to use MapStruct to map between concrete objects and DTOs to save time but also because I feel like this 
