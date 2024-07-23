@@ -91,7 +91,7 @@ collections in the test contain all the same attributes and data types. If these
 use two tables, or built the objects and schema using polymorphism while still using a single table strategy in JPA. 
 
 ### DTOs & Object Mapping
-I have chosen to use MapStruct to map between concrete objects and DTOs to save time but also because I feel like this 
+I have chosen to use MapStruct to map between JPA entities and DTOs to save time but also because I feel like this 
 is a solved problem in the same way that things like HTTP requests are. MapStruct is the best library I have used to map 
 between objects and DTOs and it offers the most flexibility in terms of customisation and mixing automatic conversion 
 with manual conversion. 
