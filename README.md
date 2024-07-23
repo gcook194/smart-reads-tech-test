@@ -21,7 +21,7 @@ password: password
 
 More details about the Spring Security flow for the project can be found in [this wonderful tutorial by Dan Vega](https://www.danvega.dev/blog/spring-security-jwt). 
 
-In order to log into the application you need to retrieve a JWT token by sending a HTTP POST request to the following endpoint. You will need to use basic auth to provide the username and password listed above when sending the request. If you have something like Postman installed then this is very simple and can be done through the **Authentication** tab inside the request builder.
+In order to log into the application you need to retrieve a JWT token by sending a HTTP POST request to the following endpoint. You will need to use basic auth to provide the username and password listed above when sending the request. If you have something like Postman installed then this is very simple and can be done through the **Authorization** tab inside the request builder.
 
 ```
 http://localhost:8081/api/smart/token
